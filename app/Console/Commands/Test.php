@@ -37,6 +37,10 @@ class Test extends Command
      */
     public function handle()
     {
+//        \Mail::send('email.text', ['content'=>'hello world'], function ($message){
+//            $message->to('865022667@qq.com');
+//            $message->subject('hehe');
+//        });
 
     }
 }
