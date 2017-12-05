@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\Email;
 use Illuminate\Console\Command;
 
 class Fetch115 extends Command
@@ -17,9 +18,9 @@ class Fetch115 extends Command
     public $user_id = 305362419;
     public $app_ver = '7.3.2';
 
-    public $cookie = 'T_305362419=1; Hm_lvt_44a958b429c66ae50f8bf3a9d959ccf5=1510845605,1511017344,1511889999; 115_lang=system; CID=3de74259397933cdca9e96ca32a183da; SEID=dcd5541a5775e92c001926dd6f78ee73d06731aee7c5081053c71cc5b35cb7e2704ceb83e5b83bef3b31ce0d55e8e1b58e27178f7934684d26a87aa5; UID=305362419_D1_1508218687; ssov_305362419=1_305362419_e333e080ed6a645f6144bf0764274265';
+    public $cookie = '115_lang=system; CID=7b45545eb385a82650171c2545b6b9e8; SEID=a221936b7be10abc9b983319545b702cc3fd589ae07de13f8cc5e4c0cfd8d44dc1bf402b2dd1d16fcab424eab9354a8c693f797a1def6d8ea6f6796a; UID=305362419_D1_1512353923; Hm_lvt_44a958b429c66ae50f8bf3a9d959ccf5=1510845605,1511017344,1511889999; ssov_305362419=1_305362419_e333e080ed6a645f6144bf0764274265';
 
-    public $token = '1d0572c8c2e89019497a0ac7b0322c09';
+    public $token = 'b55b7331321bab73581a8c5a0f9f7380';
     public $ua = 'Mozilla/5.0; Darwin/10.0; UDown/7.3.2';
 
     //摇一摇api
@@ -80,6 +81,7 @@ class Fetch115 extends Command
             'user_id' => $this->user_id,
             'token' => $this->token
         ]);
+        Email::send('115 '.__FUNCTION__, json_encode($res, JSON_UNESCAPED_UNICODE));
         return $res;
     }
 
@@ -94,6 +96,7 @@ class Fetch115 extends Command
     public function sign()
     {
         $res = $this->curlPost($this->api_sign);
+        Email::send('115 '.__FUNCTION__, json_encode($res, JSON_UNESCAPED_UNICODE));
         return $res;
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\Email;
 use Illuminate\Console\Command;
 
 class Test extends Command
@@ -37,10 +38,6 @@ class Test extends Command
      */
     public function handle()
     {
-//        \Mail::send('email.text', ['content'=>'hello world'], function ($message){
-//            $message->to('865022667@qq.com');
-//            $message->subject('hehe');
-//        });
-
+        Email::send('a','b');
     }
 }
