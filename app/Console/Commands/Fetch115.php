@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Email;
+use App\Services\TplNotice;
 use Illuminate\Console\Command;
 
 class Fetch115 extends Command
@@ -97,6 +98,7 @@ class Fetch115 extends Command
     {
         $res = $this->curlPost($this->api_sign);
         Email::send('115 '.__FUNCTION__, json_encode($res, JSON_UNESCAPED_UNICODE));
+        TplNotice::send('签到成功');
         return $res;
     }
 

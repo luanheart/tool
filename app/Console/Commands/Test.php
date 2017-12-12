@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Email;
+use App\Services\TplNotice;
 use Illuminate\Console\Command;
 
 class Test extends Command
@@ -38,6 +39,6 @@ class Test extends Command
      */
     public function handle()
     {
-        Email::send('a','b');
+        echo TplNotice::send('haha');
     }
 }
