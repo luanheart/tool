@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Lib\Func;
 use App\Services\Email;
 use App\Services\TplNotice;
 use Illuminate\Console\Command;
@@ -98,52 +99,25 @@ class Fetch115 extends Command
     {
         $res = $this->curlPost($this->api_sign);
         Email::send('115 '.__FUNCTION__, json_encode($res, JSON_UNESCAPED_UNICODE));
-        TplNotice::send('签到成功');
+        if (isset($res['state']) && $res['state']){
+            TplNotice::send('签到成功');
+        }else{
+            TplNotice::send('签到失败');
+        }
+
         return $res;
     }
 
     public function curlGet($url, $params = null, $cookie = null)
     {
-        if ($params){
-            $url = $url . (strpos($url, '?') === false ? '?' : '&') . http_build_query($params);
-        }
         if (!$cookie){
             $cookie = $this->cookie;
         }
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_COOKIE, $cookie);
-        curl_setopt($ch, CURLOPT_USERAGENT, $this->ua);
-        $res = curl_exec($ch);
-        curl_close($ch);
-        $res = json_decode($res, true);
-        \Log::info("GET请求$url", [
-            'params' => $params,
-            'res' => $res
-        ]);
-        return $res;
+        return Func::curl($url, $params, 'GET', $cookie);
     }
 
     public function curlPost($url, $params = [])
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_COOKIE, $this->cookie);
-        curl_setopt($ch, CURLOPT_USERAGENT, $this->ua);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
-        $res = curl_exec($ch);
-        curl_close($ch);
-        $res = json_decode($res, true);
-        \Log::info("GET请求$url", [
-            'params' => $params,
-            'res' => $res
-        ]);
-        return $res;
+        return Func::curl($url, $params, 'POST', $this->cookie, $this->ua);
     }
 }
