@@ -22,9 +22,9 @@ class FetchYanXuan extends Command
      */
     protected $description = '网易严选自动积分签到';
 
-    public $cookie = 'yx_csrf=45257ba458cd537ccfbd916b7a06f686; yx_username=865022667%40qq.com; yx_sid=27f16702-aa9d-43ab-8e54-7cb9dc824798; YanXuanLoginCookie=;NTES_SESS=NqijTpPXx4XA4qwzh4sRwpTIGj9SFHWtITLq_ljp3UyTIZQ.AImQ2c6ymSGzvqibHOvYsjofN6pdZ_c2UjfycczhezTYlyEvjFp1Oj323hTfeVIUuOtr58oVLIH6rEigbJyB_7M4C4tdwVekTEG5zg35fud9Y2Q3sr.RqWIpp6CCNVkk7o4Lf2goMDfOwy5Hp;P_INFO=865022667@qq.com|1514341389|0|yanxuan|00&99|jis&1514210361&moneykeeper#jis&320500#10#0#0|&0|yanxuan&moneykeeper|865022667@qq.com;S_INFO=1514341389|0|##|865022667@qq.com|;yx_aui=b8d61c05-ea24-4470-9500-84bb5a158082;';
+    public $cookie = 'yx_csrf=118d07c4fdf7ddfad6eb0338b388bfe7; yx_username=865022667%40qq.com; yx_sid=aad63159-4ccf-4433-86fc-6e38d7f0ce95; YanXuanLoginCookie=;NTES_SESS=01klN0JIriGT_idbNLapVyFMBL3GpGX6jNkF2ufIlvmQYlSmBYhS.9V3hH5sTDIiFaTX8rce0VGqlf9.1re399swdsEXM3RTrjCzhc7r0A92JuacXgUCMXMj7pYEGFyZM4IhndPSkwii.Lzj77yXr1gLDQsTjo2NMCW2BG19GU9eFj8OdPjaFobrgqJqYwmnN;P_INFO=865022667@qq.com|1514979708|0|yanxuan|00&99|jis&1514979707&yanxuan#jis&320500#10#0#0|&0|yanxuan&note_client&moneykeeper|865022667@qq.com;S_INFO=1514979708|0|##|865022667@qq.com|;yx_aui=b8d61c05-ea24-4470-9500-84bb5a158082;';
 
-    public $csrf_token = '45257ba458cd537ccfbd916b7a06f686';
+    public $csrf_token = '118d07c4fdf7ddfad6eb0338b388bfe7';
 
     public $api_points_sign = 'https://m.you.163.com/xhr/points/sign.json';
 
@@ -60,9 +60,10 @@ class FetchYanXuan extends Command
     {
         $res = Func::curl($this->api_points_sign . "?csrf_token={$this->csrf_token}", [], 'POST', $this->cookie);
         if (isset($res) && $res['code'] == 200){
-            TplNotice::send('网易严选', '积分签到成功');
+//            TplNotice::send('网易严选', '积分签到成功');
         }else{
-            TplNotice::send('网易严选', '积分签到失败');
+            TplNotice::send('网易严选该换token了', '积分签到失败');
         }
+        \Log::info('网易严选积分签到结果', $res);
     }
 }
