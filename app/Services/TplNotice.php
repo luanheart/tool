@@ -25,7 +25,7 @@ class TplNotice
             'url' => $url
         ];
         $params['token'] = self::getToken($params);
-        $post_url = 'http://mama-weiketang.e-shopwyeth.com/api/hd/sendNoticeTpl';
+        $post_url = 'http://mama-weiketang-wyeth.woaap.com/api/hd/sendNoticeTpl';
 
         $client = new Client();
         try{

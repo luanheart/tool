@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('115 all')->dailyAt('00:12');
 
         //网易严选积分签到
-        $schedule->command('yanxuan sign')->dailyAt('09:00');
+        $schedule->command('yanxuan sign')->dailyAt('10:14');
     }
 
     /**
