@@ -65,7 +65,6 @@ class Fetch115 extends Command
                 var_dump($this->sign());
                 break;
             case 'all':
-                var_dump($this->takespc());
                 var_dump($this->sign());
                 break;
             default:
@@ -98,11 +97,11 @@ class Fetch115 extends Command
     public function sign()
     {
         $res = $this->curlPost($this->api_sign);
-        Email::send('115 '.__FUNCTION__, json_encode($res, JSON_UNESCAPED_UNICODE));
         if (isset($res['state']) && $res['state']){
-            TplNotice::send('签到成功');
+//            TplNotice::send('签到成功');
         }else{
             TplNotice::send('签到失败');
+            Email::send('115 '.__FUNCTION__, json_encode($res, JSON_UNESCAPED_UNICODE));
         }
 
         return $res;
