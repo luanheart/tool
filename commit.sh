@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 提交代码并在服务器上拉取
+
 m=${1:-'更换token'}
 
 git add .
