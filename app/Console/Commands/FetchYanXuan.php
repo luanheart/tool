@@ -22,9 +22,9 @@ class FetchYanXuan extends Command
      */
     protected $description = '网易严选自动积分签到';
 
-    public $cookie = 'NTES_SESS=4TyW7TDDCC8pMjQjSiXJ0CSUMHVkR2EH7RGpnQBwHyjU6H1js6r1gX0Wr7qa3lwhpo3VKTYt40dZHBXg_TtWXXaxuaCVFWJ3TPQUX75b2lXS.QoYVL92FVFvfe6CdpMSFbwr5ui1GxhhgDOvffMVT_LDlUa3vInRF2knsd_Xd9XtpvKPuivopImTLZ.Z6xj5R; P_INFO=865022667@qq.com|1520993664|0|yanxuan|00&99|jis&1520993664&yanxuan#jis&320500#10#0#0|&0|yanxuan&moneykeeper|865022667@qq.com; S_INFO=1520993664|0|##|865022667@qq.com|; yx_aui=b8d61c05-ea24-4470-9500-84bb5a158082; yx_csrf=b4a60f5828b4fe8ed21b74becb0f7f0d; yx_username=865022667%40qq.com; yx_sid=a13b2eb6-5128-4a39-9783-e8c10770a56f; _9755xjdesxxd_=32; gdxidpyhxdE=37E%5CO%2BkZL8c762kr7uic4WvXrzXATRCNAb6C8Knku4p8Twlp0tBDyHH3oqvqqco430Nq%2BuNyOaepnD8RDn108T1qTz8%2BA%2F89ZXExlJ2M25jEEqTa%2BKCurxrb88AySTjPrx6DubNnbY6qOeaooa2RYUUG%2F4jSeP7t2mOuucD%5C4emUv9Ek%3A1521001060932';
+    public $cookie = 'NTES_SESS=L9HWfGY7c3Osrp0iwGyhVcQpkhmpuvST85KaQ6iWzfHN2z0Hh2F0SJgtFO9reAWMaTe.xpCILgcXziJS4pItJJqxX3yzG6WbrQnA8qsJ_tgkZ6TC.1Rus.s7Po2dcaBVsDWFUYy0KkMMS_j7PPB.p41_ANre73Q5su8Qhc4JcRJIa7xvYy7Ta3lp1XZX2kHU5; P_INFO=865022667@qq.com|1521685941|0|yanxuan|00&99|jis&1521685941&yanxuan#jis&320100#10#0#0|&0|yanxuan&moneykeeper|865022667@qq.com; S_INFO=1521685941|0|##|865022667@qq.com|; yx_aui=b8d61c05-ea24-4470-9500-84bb5a158082; yx_csrf=1e41df29be73ddf3f130d2b1e949f2d5; yx_username=865022667%40qq.com; yx_sid=29e27f2b-17cd-4935-948b-d6830cfe6949; _9755xjdesxxd_=32; gdxidpyhxdE=euQXwMlz%5C8LULwuNqaTNlN%2BezDpuQb2xbYdsgmMTXnZfKw3JKG7OzAegnba2a8Jv7drzEgmEo1fqAQBLmDKSoW3G%2FCJOGw8aw6xHKmSnAZvslUz6krMSjQR7Iqx3HoV7seMDMV%5CglnXfkx5Q0WP0at%2FaPmjyJiEMD4iRtzyr5t4rxeLc%3A1521686844276';
 
-    public $csrf_token = 'b4a60f5828b4fe8ed21b74becb0f7f0d';
+    public $csrf_token = '1e41df29be73ddf3f130d2b1e949f2d5';
 
     public $api_points_sign = 'https://m.you.163.com/xhr/points/sign.json';
 
