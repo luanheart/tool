@@ -8,4 +8,4 @@ git add .
 git commit -m "$m"
 git push
 
-ssh aliyun "cd /var/www/html/tool; git pull"
+ssh aliyun "cd /var/www/html/tool; git pull; php artisan yanxuan sign"
